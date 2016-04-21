@@ -41,7 +41,7 @@ public class GestionClientMB implements Serializable{
 	public GestionClientMB() {
 		super();
 		ApplicationContext ctx = new FileSystemXmlApplicationContext(
-				"C:\\Users\\inti0297\\Desktop\\formation\\SpecialGit\\workspaceBanque\\afficherClients\\src\\main\\webapp\\WEB-INF\\applicationContext.xml");
+				"src\\main\\webapp\\WEB-INF\\applicationContext.xml");
 		this.daoClient = (IDaoClient) ctx.getBean("clientDaoBean");
 		this.client=new Client();
 		this.id=0;
