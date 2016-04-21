@@ -10,15 +10,15 @@
 
 <h:body>
 	<p:outputPanel id="panel">
-	<label>Nom: </label><p:inputText name="nomClient" value="#{gestionClient.client.nom}"/>
+	<h:form><label>Nom: </label><h:inputText name="nomClient" value="#{gestionClient.client.nom}"/></h:form>
 	<br/>
-	<label>Prénom:</label><p:inputText name="prenomClient" value="#{gestionClient.client.prenom}"/>
+	<h:form><label>Prénom:</label><h:inputText name="prenomClient" value="#{gestionClient.client.prenom}"/></h:form>
 	<br/>
-	<label>Adresse:</label><p:inputText name="adresse" value="#{gestionClient.client.adresse}"/>
+	<h:form><label>Adresse:</label><h:inputText name="adresse" value="#{gestionClient.client.adresse}"/></h:form>
 	<br/>
-	<label>Code Postal:</label><p:inputText name="codepostal" value="#{gestionClient.client.codePostal}"/>
+	<h:form><label>Code Postal:</label><h:inputText name="codepostal" value="#{gestionClient.client.codePostal}"/></h:form>
 	<br/>
-	<label>Ville:</label><p:inputText name="nomClient" value="#{gestionClient.client.ville}"/>
+	<h:form><label>Ville:</label><h:inputText name="nomClient" value="#{gestionClient.client.ville}"/></h:form>
 	<br/>
 	</p:outputPanel>
 <h:form>
@@ -26,7 +26,7 @@
 	<br/>
 
 	<p:commandButton value="afficher client" actionListener="#{gestionClient.clientById}" update=":panel"/>
-	
+	<p:commandButton value="modifier client" actionListener="#{gestionClient.modifierClient}" update=":panel"/>
 </h:form>
 </h:body>
 

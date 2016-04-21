@@ -40,8 +40,10 @@ public class GestionClientMB implements Serializable{
 
 	public GestionClientMB() {
 		super();
+		//attention à modifier le path de ton applicationContext.xml (
+		//faudra trouver une meilleure solution pour faire marcher tout ça)
 		ApplicationContext ctx = new FileSystemXmlApplicationContext(
-				"src\\main\\webapp\\WEB-INF\\applicationContext.xml");
+				"C:\\Users\\inti0297\\gitProxy\\afficherClients\\src\\main\\webapp\\WEB-INF\\applicationContext.xml");
 		this.daoClient = (IDaoClient) ctx.getBean("clientDaoBean");
 		this.client=new Client();
 		this.id=0;
@@ -78,7 +80,6 @@ public class GestionClientMB implements Serializable{
 	}
 	
 	public void modifierClient(){
-		this.client=daoClient.getClientById(id);
-		daoClient.updateClient(client);
+		
 	}
 }
