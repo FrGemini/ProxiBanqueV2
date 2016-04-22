@@ -6,18 +6,21 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import fr.inti.dao.DaoClientImpl;
 import fr.inti.dao.IDaoClient;
 import fr.inti.entities.Client;
 
-@ManagedBean (name="gestionClient")
+@Controller(value="gestionClient")
 @SessionScoped
 public class GestionClientMB implements Serializable{
 
 	private List<Client> clients;
+	@Autowired
 	private IDaoClient daoClient;
 	private Client client;
 	private int id;
@@ -40,11 +43,7 @@ public class GestionClientMB implements Serializable{
 
 	public GestionClientMB() {
 		super();
-		//attention à modifier le path de ton applicationContext.xml (
-		//faudra trouver une meilleure solution pour faire marcher tout ça)
-		ApplicationContext ctx = new FileSystemXmlApplicationContext(
-				"C:\\Users\\inti0297\\gitProxy\\afficherClients\\src\\main\\webapp\\WEB-INF\\applicationContext.xml");
-		this.daoClient = (IDaoClient) ctx.getBean("clientDaoBean");
+		
 		this.client=new Client();
 		this.id=0;
 	}
