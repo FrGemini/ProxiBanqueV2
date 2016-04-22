@@ -12,16 +12,15 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import fr.inti.entities.Client;
 
 @Transactional
-public class DaoClientImpl extends HibernateDaoSupport implements IDaoClient{
+public class DaoClientImpl extends HibernateDaoSupport implements IDaoClient {
 
-	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	
+
 	public List<Client> getAllClients() {
 		String reqHqlGetAll = "FROM Client";
-		List<Client> clientList = (List<Client>) getHibernateTemplate().find(reqHqlGetAll);
+		List<Client> clientList = (List<Client>) getHibernateTemplate().find(
+				reqHqlGetAll);
 		return clientList;
 	}
 
@@ -32,23 +31,25 @@ public class DaoClientImpl extends HibernateDaoSupport implements IDaoClient{
 
 	public Client getClientById(int id) {
 		// HQL : Hibernate Query Language
-				String reqHqlGetById = "FROM Client WHERE clientId = ?";
-				List<Client> clientList = (List<Client>) getHibernateTemplate().find(reqHqlGetById, id);
-				return clientList.get(0);
+		String reqHqlGetById = "FROM Client WHERE clientId = ?";
+		List<Client> clientList = (List<Client>) getHibernateTemplate().find(
+				reqHqlGetById, id);
+		return clientList.get(0);
 	}
 
 	public void deleteClient(Client client) {
-		Query query = sessionFactory.getCurrentSession().createQuery("delete Client where id = :ID");
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"delete Client where id = :ID");
 		query.setParameter("ID", client.getClientId());
 		query.executeUpdate();
 		System.out.println("client effacé");
-		
+
 	}
 
 	public void updateClient(Client client) {
 		getHibernateTemplate().setCheckWriteOperations(false);
 		getHibernateTemplate().update(client);
-		
+
 	}
 
 }

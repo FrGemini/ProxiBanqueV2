@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Virement compte a compte</title>
+</h:head>
+
+<h:body>
+	<p:outputPanel id="panel">
+		<h:form>
+			<p:dataTable value="#{gestionCompte}" var="compte" border="1">
+
+				<p:column>
+					<f:facet name="Header">Id Compte</f:facet>
+				#{compte.id}
+			</p:column>
+				<p:column>
+					<f:facet name="header">date de creation</f:facet>
+				#{compte.dateCreation}
+			</p:column>
+				<p:column>
+					<f:facet name="header">Solde</f:facet>
+				#{compte.solde}
+			</p:column>
+				<p:column>
+					<f:facet name="header">Decouvert</f:facet>
+				#{compte.decouvert}
+			</p:column>
+				<p:column>
+					<f:facet name="header">Actions</f:facet>
+						<p:commandButton value="source" action="" />
+						<p:commandButton value="destination" action="" />
+				</p:column>
+			</p:dataTable>
+			<label>Montant virement : </label><h:inputText value="#{gestionCompte.montant}"/>
+			<p:commandButton value="Lancer virement" action="" />
+		</h:form>
+	</p:outputPanel>
+
+
+</h:body>
+
+</html>
