@@ -27,7 +27,7 @@ public class CompteEpargne extends CompteBancaire {
 	private float solde;
 	@Column(name = "taux")
 	private float taux=(float) 0.03;
-	@OneToOne(mappedBy="ce", orphanRemoval=true)
+	@OneToOne
 	private Client client;
 
 	public CompteEpargne() {
@@ -39,7 +39,7 @@ public class CompteEpargne extends CompteBancaire {
 		this.dateCreation = dateCreation;
 		this.solde = solde;
 		this.taux = taux;
-		//this.client = client;
+		this.client = client;
 	}
 
 	
@@ -47,7 +47,7 @@ public class CompteEpargne extends CompteBancaire {
 			Client client) {
 		this.dateCreation = dateCreation;
 		this.solde = solde2;
-		//this.client = client;
+		this.client = client;
 	}
 
 	public int getId() {
@@ -82,12 +82,12 @@ public class CompteEpargne extends CompteBancaire {
 		this.taux = taux;
 	}
 
-	//public Client getClient() {
-	//	return client;
-	//}
+	public Client getClient() {
+		return client;
+	}
 
-	//public void setClient(Client client) {
-	//	this.client = client;
-	//}
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 }

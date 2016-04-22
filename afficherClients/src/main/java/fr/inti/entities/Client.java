@@ -48,10 +48,30 @@ public class Client implements Serializable {
 	@Column(name="telephone")
 	protected String telephone;
 
-	@OneToOne
+	@OneToOne(mappedBy="client", orphanRemoval=true)
 	protected CompteCourant cc;
-	@OneToOne
+	@OneToOne(mappedBy="client", orphanRemoval=true)
 	protected CompteEpargne ce;
+	
+	
+
+	
+	
+	public CompteCourant getCc() {
+		return cc;
+	}
+
+	public void setCc(CompteCourant cc) {
+		this.cc = cc;
+	}
+
+	public CompteEpargne getCe() {
+		return ce;
+	}
+
+	public void setCe(CompteEpargne ce) {
+		this.ce = ce;
+	}
 
 	public Client() {
 		super();

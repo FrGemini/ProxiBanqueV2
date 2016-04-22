@@ -25,7 +25,7 @@ public class CompteCourant extends CompteBancaire {
 	private Date dateCreation;
 	@Column(name = "solde")
 	private float solde;
-	@OneToOne(mappedBy="cc", orphanRemoval=true)
+	@OneToOne
 	private Client client;
 	@Column(name="decouvert")
 	private float decouvert;
@@ -84,13 +84,13 @@ public class CompteCourant extends CompteBancaire {
 
 
 
-	//public Client getClient() {
-	//	return client;
-	//}
+	public Client getClient() {
+		return client;
+	}
 
-	//public void setClient(Client client) {
-	//	this.client = client;
-	//}
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	public float getDecouvert() {
 		return decouvert;
