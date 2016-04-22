@@ -33,4 +33,8 @@ public class ServiceCompteEpargneImpl implements IServiceCompteEpargne {
 		return daoCompte.selectAll();
 	}
 
+	public CompteEpargne selectByIdClient(int idClient) {
+		return daoCompte.getCompteByIdClient(idClient);
+	}
+
 }

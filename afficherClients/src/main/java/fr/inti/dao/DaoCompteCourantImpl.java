@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.inti.entities.Client;
 import fr.inti.entities.CompteCourant;
+import fr.inti.entities.CompteEpargne;
 
 @Repository
 @Transactional
@@ -30,8 +31,11 @@ public class DaoCompteCourantImpl implements IDaoCompteCourant {
 	}
 
 	public CompteCourant getCompteByIdClient(int idClient) {
-		// TODO Auto-generated method stub
-		return null;
+		List<CompteCourant> listeRetour = getSession()
+				.createQuery(
+						"SELECT cc FROM CompteCourant WHERE CompteCourant.client_id_client=?")
+				.setParameter(0, idClient).list();
+		return listeRetour.get(0);
 	}
 
 	public void update(CompteCourant compte) {

@@ -23,19 +23,23 @@ public class DaoCompteEpargneImpl implements IDaoCompteEpargne {
 	}
 
 	public CompteEpargne getCompteByIdCompte(int idCompte) {
-		CompteEpargne ce = (CompteEpargne) getSession().get(CompteEpargne.class, idCompte);
+		CompteEpargne ce = (CompteEpargne) getSession().get(
+				CompteEpargne.class, idCompte);
 		return ce;
 	}
 
 	public CompteEpargne getCompteByIdClient(int idClient) {
-		// TODO Auto-generated method stub
-		return null;
+		List<CompteEpargne> listeRetour = getSession()
+				.createQuery(
+						"SELECT cc FROM CompteEpargne WHERE CompteEpargne.client_id_client=?")
+				.setParameter(0, idClient).list();
+		return listeRetour.get(0);
 	}
 
 	public void update(CompteEpargne compte) {
 		getSession().update(compte);
 	}
-	
+
 	public List<CompteEpargne> selectAll() {
 		return getSession().createQuery("from epargne").list();
 	}
