@@ -48,6 +48,10 @@ public class Client implements Serializable {
 	@Column(name="telephone")
 	protected String telephone;
 
+	@OneToOne
+	protected CompteCourant cc;
+	@OneToOne
+	protected CompteEpargne ce;
 
 	public Client() {
 		super();

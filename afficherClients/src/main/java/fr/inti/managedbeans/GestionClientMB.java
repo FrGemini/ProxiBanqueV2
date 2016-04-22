@@ -24,8 +24,8 @@ public class GestionClientMB implements Serializable{
 	private List<Client> clients;
 	@Autowired
 	private IDaoClient daoClient;
-//	@Autowired
-//	private IServiceClient serviceClient;
+	@Autowired
+	private IServiceClient serviceClient;
 	private Client client;
 	private int id;
 	
@@ -62,7 +62,7 @@ public class GestionClientMB implements Serializable{
 
 	
 	public List<Client> getClients(){
-		return daoClient.getAllClients();
+		return serviceClient.listeClient();
 	}
 	
 	public void setClients(List<Client> clients) {
@@ -80,7 +80,7 @@ public class GestionClientMB implements Serializable{
 	}
 	
 	public void addClient(){
-		daoClient.addClient(client);
+		serviceClient.ajouterClient(client);
 	}
 	
 	public void clientById(){
@@ -88,11 +88,11 @@ public class GestionClientMB implements Serializable{
 	}
 	
 	public void effacerClient(Client cli){
-		daoClient.deleteClient(cli);
+		serviceClient.supprimerClient(cli);
 	}
 	
 	public void modifierClient(){
 		client.setClientId(id);
-		daoClient.updateClient(client);
+		serviceClient.modifierClient(client);
 	}
 }

@@ -25,9 +25,8 @@ public class CompteCourant extends CompteBancaire {
 	private Date dateCreation;
 	@Column(name = "solde")
 	private float solde;
-	//@OneToOne
-	//@JoinColumn(name="clientId")
-	//private Client client;
+	@OneToOne(mappedBy="cc", orphanRemoval=true)
+	private Client client;
 	@Column(name="decouvert")
 	private float decouvert;
 

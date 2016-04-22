@@ -27,8 +27,8 @@ public class CompteEpargne extends CompteBancaire {
 	private float solde;
 	@Column(name = "taux")
 	private float taux=(float) 0.03;
-	//@OneToOne(fetch=FetchType.LAZY)
-	//private Client client;
+	@OneToOne(mappedBy="ce", orphanRemoval=true)
+	private Client client;
 
 	public CompteEpargne() {
 		

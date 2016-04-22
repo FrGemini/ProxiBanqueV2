@@ -25,7 +25,7 @@
 	<label>Id:</label><p:inputText name="idClient" value="#{gestionClient.id}"/>
 	<br/>
 
-	<p:commandButton value="afficher client" actionListener="#{gestionClient.clientById}"/>
+	<p:commandButton value="afficher client" actionListener="#{gestionClient.clientById}" update="@all"/>
 	<p:commandButton value="modifier client" actionListener="#{gestionClient.modifierClient}"/>
 </h:form>
 </h:body>
