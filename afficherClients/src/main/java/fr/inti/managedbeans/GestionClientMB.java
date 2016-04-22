@@ -3,6 +3,7 @@ package fr.inti.managedbeans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -30,6 +31,8 @@ public class GestionClientMB implements Serializable{
 	
 	
 	
+	
+
 
 
 
@@ -47,9 +50,15 @@ public class GestionClientMB implements Serializable{
 	public GestionClientMB() {
 		super();
 		
-		this.client=new Client();
-		this.id=0;
+		
 	}
+
+
+    @PostConstruct
+    public void init() {
+    	this.client=new Client();
+		this.id=0;
+    }
 
 	
 	public List<Client> getClients(){
@@ -61,6 +70,7 @@ public class GestionClientMB implements Serializable{
 	}
 	
 	public Client getClient() {
+		
 		return client;
 	}
 
@@ -82,6 +92,7 @@ public class GestionClientMB implements Serializable{
 	}
 	
 	public void modifierClient(){
+		client.setClientId(id);
 		daoClient.updateClient(client);
 	}
 }
