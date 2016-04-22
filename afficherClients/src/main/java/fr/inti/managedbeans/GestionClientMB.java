@@ -79,6 +79,6 @@ public class GestionClientMB implements Serializable{
 	}
 	
 	public void modifierClient(){
-		
+		daoClient.updateClient(client);
 	}
 }
