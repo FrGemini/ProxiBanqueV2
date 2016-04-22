@@ -53,10 +53,18 @@ public class Client implements Serializable {
 	@OneToOne(mappedBy="client", orphanRemoval=true)
 	protected CompteEpargne ce;
 	
-	
+	private Conseiller conseiller;
 
 	
 	
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+
 	public CompteCourant getCc() {
 		return cc;
 	}

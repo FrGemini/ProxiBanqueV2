@@ -32,8 +32,48 @@ public class Conseiller implements Serializable {
 	@Column(name="agence")
 	private String agence;
 	
-	//@OneToMany
-	//private Set<Client> clients;
+	@OneToMany(mappedBy="conseiller")
+	private Set<Client> clients;
+
+	public int getConseillerId() {
+		return conseillerId;
+	}
+
+	public void setConseillerId(int conseillerId) {
+		this.conseillerId = conseillerId;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getAgence() {
+		return agence;
+	}
+
+	public void setAgence(String agence) {
+		this.agence = agence;
+	}
+
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
+	}
 
 	public Conseiller() {
 		super();
