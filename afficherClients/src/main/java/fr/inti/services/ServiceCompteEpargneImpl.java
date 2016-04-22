@@ -5,33 +5,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.inti.dao.IDaoCompteCourant;
-import fr.inti.entities.CompteCourant;
+import fr.inti.dao.IDaoCompteEpargne;
+import fr.inti.entities.CompteEpargne;
 
 @Service
-public class ServiceCompteCourantImpl implements IServiceCompteCourant {
-	
+public class ServiceCompteEpargneImpl implements IServiceCompteEpargne {
+
 	@Autowired
-	private IDaoCompteCourant daoCompte;
+	private IDaoCompteEpargne daoCompte;
 	
 
-	public IDaoCompteCourant getDaoCompte() {
+	public IDaoCompteEpargne getDaoCompte() {
 		return daoCompte;
 	}
 
-	public void takeMoney(CompteCourant cc, float montant) {
+	public void takeMoney(CompteEpargne cc, float montant) {
 		cc.setSolde(cc.getSolde() - montant);
 		daoCompte.update(cc);
 	}
 
-	public void addMoney(CompteCourant cc, float montant) {
+	public void addMoney(CompteEpargne cc, float montant) {
 		cc.setSolde(cc.getSolde() + montant);
 		daoCompte.update(cc);
 	}
 
-	public List<CompteCourant> selectAll() {
+	public List<CompteEpargne> selectAll() {
 		return daoCompte.selectAll();
 	}
-
 
 }

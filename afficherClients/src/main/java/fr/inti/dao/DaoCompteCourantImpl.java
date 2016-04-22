@@ -37,5 +37,10 @@ public class DaoCompteCourantImpl implements IDaoCompteCourant {
 	public void update(CompteCourant compte) {
 		getSession().update(compte);
 	}
+	
+	public List<CompteCourant> selectAll() {
+		return getSession().createQuery("from courant").list();
+		
+	}
 
 }
