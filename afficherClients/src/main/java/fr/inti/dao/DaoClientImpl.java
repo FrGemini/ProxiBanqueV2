@@ -5,18 +5,22 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import fr.inti.entities.Client;
 
+@Repository
 @Transactional
 public class DaoClientImpl extends HibernateDaoSupport implements IDaoClient {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	
 	public List<Client> getAllClients() {
 		String reqHqlGetAll = "FROM Client";
 		List<Client> clientList = (List<Client>) getHibernateTemplate().find(
@@ -25,8 +29,8 @@ public class DaoClientImpl extends HibernateDaoSupport implements IDaoClient {
 	}
 
 	public void addClient(Client client) {
-		getHibernateTemplate().setCheckWriteOperations(false);
-		getHibernateTemplate().save(client);
+		
+		sessionFactory.getCurrentSession().save(client);
 	}
 
 	public Client getClientById(int id) {
@@ -47,8 +51,7 @@ public class DaoClientImpl extends HibernateDaoSupport implements IDaoClient {
 	}
 
 	public void updateClient(Client client) {
-		getHibernateTemplate().setCheckWriteOperations(false);
-		getHibernateTemplate().update(client);
+		sessionFactory.getCurrentSession().update(client);
 
 	}
 

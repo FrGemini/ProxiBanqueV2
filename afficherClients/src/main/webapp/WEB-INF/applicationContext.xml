@@ -43,7 +43,7 @@
 	
 		
 		
-		<bean id="clientDaoBean"
+		<bean id="daoClientImpl"
 		class="fr.inti.dao.DaoClientImpl">
 		
 		<!-- injecter la session factory dans la DAO -->

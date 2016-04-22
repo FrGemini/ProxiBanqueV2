@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import fr.inti.dao.DaoClientImpl;
 import fr.inti.dao.IDaoClient;
 import fr.inti.entities.Client;
+import fr.inti.services.IServiceClient;
 
 @Controller(value="gestionClient")
 @SessionScoped
@@ -22,6 +23,8 @@ public class GestionClientMB implements Serializable{
 	private List<Client> clients;
 	@Autowired
 	private IDaoClient daoClient;
+//	@Autowired
+//	private IServiceClient serviceClient;
 	private Client client;
 	private int id;
 	
