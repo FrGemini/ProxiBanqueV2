@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.inti.dao.IDaoCompteCourant;
-import fr.inti.entities.Client;
 import fr.inti.entities.CompteCourant;
 
 @Service
@@ -36,8 +35,13 @@ public class ServiceCompteCourantImpl implements IServiceCompteCourant {
 	public CompteCourant selectByIdClient(int idClient) {
 		return daoCompte.getCompteByIdClient(idClient);
 	}
-	
-	
 
+	public List<CompteCourant> lowSolde() {
+		return daoCompte.lowSolde();
+	}
+
+	public List<CompteCourant> highSolde() {
+		return daoCompte.highSolde();
+	}	
 
 }

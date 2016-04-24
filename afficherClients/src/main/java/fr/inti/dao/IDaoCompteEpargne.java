@@ -6,7 +6,14 @@ import fr.inti.entities.CompteEpargne;
 
 public interface IDaoCompteEpargne {
 	CompteEpargne getCompteByIdCompte(int idCompte);
+	
 	CompteEpargne getCompteByIdClient(int idClient);
-	void update(CompteEpargne compte);
+	
+	void create(CompteEpargne compteEpargne);
+	
+	void update(CompteEpargne compteEpargne);
+	
+	void delete(CompteEpargne compteEpargne);
+	
 	List<CompteEpargne> selectAll();
 }

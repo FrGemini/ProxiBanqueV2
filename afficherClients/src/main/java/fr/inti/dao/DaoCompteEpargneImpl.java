@@ -1,5 +1,6 @@
 package fr.inti.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -36,10 +37,19 @@ public class DaoCompteEpargneImpl implements IDaoCompteEpargne {
 		return listeRetour.get(0);
 	}
 
+	public void create(CompteEpargne compteEpargne) {
+		compteEpargne.setDateCreation(new Date());
+		getSession().save(compteEpargne);
+	}
+	
 	public void update(CompteEpargne compte) {
 		getSession().update(compte);
 	}
 
+	public void delete(CompteEpargne compteEpargne) {
+		getSession().delete(compteEpargne);
+	}
+	
 	public List<CompteEpargne> selectAll() {
 		return getSession().createQuery("from epargne").list();
 	}

@@ -1,5 +1,6 @@
 package fr.inti.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,12 +8,9 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import fr.inti.entities.Client;
 import fr.inti.entities.CompteCourant;
-import fr.inti.entities.CompteEpargne;
 
 @Repository
 @Transactional
@@ -26,7 +24,8 @@ public class DaoCompteCourantImpl implements IDaoCompteCourant {
 	}
 
 	public CompteCourant getCompteByIdCompte(int idCompte) {
-		CompteCourant cc = (CompteCourant) getSession().get(CompteCourant.class, idCompte);
+		CompteCourant cc = (CompteCourant) getSession().get(
+				CompteCourant.class, idCompte);
 		return cc;
 	}
 
@@ -41,10 +40,27 @@ public class DaoCompteCourantImpl implements IDaoCompteCourant {
 	public void update(CompteCourant compte) {
 		getSession().update(compte);
 	}
-	
+
 	public List<CompteCourant> selectAll() {
 		return getSession().createQuery("from courant").list();
-		
+
+	}
+
+	public void create(CompteCourant compte) {
+		compte.setDateCreation(new Date());
+		getSession().save(compte);
+	}
+
+	public void delete(CompteCourant compte) {
+		getSession().delete(compte);
+	}
+
+	public List<CompteCourant> lowSolde() {
+		return getSession().createQuery("SELECT cc FROM CompteCourant WHERE CompteCourant.solde < 0").list();
+	}
+
+	public List<CompteCourant> highSolde() {
+		return getSession().createQuery("SELECT cc FROM CompteCourant WHERE CompteCourant.solde > 500000").list();
 	}
 
 }

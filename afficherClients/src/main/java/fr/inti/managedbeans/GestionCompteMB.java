@@ -16,7 +16,9 @@ import org.springframework.stereotype.Controller;
 
 
 
+
 import fr.inti.dao.IDaoCompteCourant;
+import fr.inti.entities.Client;
 import fr.inti.entities.CompteBancaire;
 import fr.inti.entities.CompteCourant;
 import fr.inti.entities.CompteEpargne;
@@ -42,6 +44,8 @@ public class GestionCompteMB implements Serializable{
 	private CompteBancaire ccDest;
 	private String typeCompteSource;
 	private String typeCompteDestination;
+	private Client clientDebiter;
+	private Client clientCrediter;
 	
 	private float montantVirement;
 	
@@ -50,6 +54,8 @@ public class GestionCompteMB implements Serializable{
 		this.typeCompteDestination = "";
 		this.typeCompteSource = "";
 		this.montantVirement = 0;
+		this.clientCrediter = new Client();
+		this.clientDebiter = new Client();
 	}
 	
 	
@@ -108,11 +114,30 @@ public class GestionCompteMB implements Serializable{
 		return serviceCompteEpargne;
 	}
 	
+	public Client getClientDebiter() {
+		return clientDebiter;
+	}
+
+
+	public void setClientDebiter(Client clientDebiter) {
+		this.clientDebiter = clientDebiter;
+	}
+
+
+	public Client getClientCrediter() {
+		return clientCrediter;
+	}
+
+
+	public void setClientCrediter(Client clientCrediter) {
+		this.clientCrediter = clientCrediter;
+	}
+	
+	
 	/********** Methodes managed bean **********/
-	
-	
+
 	/**
-	 * initialisation du compte source en fonction du type de compte que l'on choisit
+	 * initialisation du compte débité en fonction du type de compte que l'on choisit
 	 * @param typeCompteSource
 	 * @param compte
 	 */
@@ -127,7 +152,7 @@ public class GestionCompteMB implements Serializable{
 	}
 	
 	/**
-	 * initialisation du compte destination en fonction du type de compte que l'on choisit
+	 * initialisation du compte crédité en fonction du type de compte que l'on choisit
 	 * @param typeCompteDestination
 	 * @param compte
 	 */
@@ -149,6 +174,8 @@ public class GestionCompteMB implements Serializable{
 		ccSource = null;
 		ccDest = null;
 		montantVirement = 0;
+		clientCrediter = new Client();
+		clientDebiter = new Client();
 	}
 
 	public void virement(){
