@@ -10,25 +10,26 @@
 
 <body>
 	<p:panel id="listeConseiller" header="Liste des conseillers :">
-		<p:dataTable value="" var="conseiller" border="1">
+		<p:dataTable value="#{gestionConseiller.listeConseillers()}" var="conseiller" border="1">
 
 			<p:column>
 				<f:facet name="header">Id conseiller</f:facet>
-
+				#{conseiller.conseillerId}
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">Nom</f:facet>
-
+				#{conseiller.nom}
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">Prenom</f:facet>
+				#{conseiller.prenom}
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">Agence</f:facet>
-
+				#{conseiller.agence}
 			</p:column>
 
 			<p:column>
